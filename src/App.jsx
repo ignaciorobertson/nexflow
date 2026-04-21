@@ -278,15 +278,15 @@ const PORTFOLIO = [
 
 const TESTIMONIALS = [
   {
-    text: "Automatizamos todo el proceso de onboarding de nuevos clientes. Lo que antes tomaba dos horas de trabajo manual ahora se ejecuta solo en minutos, sin errores.",
+    text: "Excelente trabajo de parte del equipo de Nexflow, ha ayudado a mi negocio de gastronómico a crecer exponencialmente y a centrarme en lo que realmente importa, la calidad de mis productos.",
     name: "Martina G.",
-    role: "CEO, AgenciaMKT",
+    role: "Dueña - restaurant",
     initial: "M",
   },
   {
-    text: "La integración entre nuestro CRM y las redes sociales fue perfecta. Ahora tenemos datos actualizados en tiempo real y nuestro equipo puede enfocarse en vender, no en copiar datos.",
+    text: "El trabajo de Nexflow ha hecho crecer mis ventas un 20%, muy completo con metricas y reportes que contribuyen a tomar mejores decisiones.",
     name: "Alejandro P.",
-    role: "Director de Operaciones",
+    role: "Dueño - vinoteca",
     initial: "A",
   },
 ];
