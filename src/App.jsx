@@ -207,35 +207,6 @@ const GLOBAL_CSS = `
   .divider {
     height:1px; background:var(--border); margin:0;
   }
-
-  /* ── Responsive Utilities ── */
-  .hero-container { display: flex; align-items: center; gap: 3rem; position: relative; z-index: 10; }
-  .hero-text { flex: 1; min-width: 0; display: flex; flex-direction: column; }
-  .hero-buttons { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 3.5rem; justify-content: flex-start; }
-  .hero-stats { display: flex; gap: 3rem; flex-wrap: wrap; }
-  .hero-ribbon { flex: 0 0 auto; width: 44%; display: flex; justify-content: center; }
-  
-  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
-
-  .desktop-nav { display: flex; align-items: center; gap: 2.5rem; }
-  .mobile-menu-btn { display: none; background: none; border: none; color: var(--text); cursor: pointer; }
-
-  @media (max-width: 992px) {
-    .desktop-nav { display: none; }
-    .mobile-menu-btn { display: block; }
-    .hero-container { flex-direction: column; text-align: center; }
-    .hero-text { align-items: center; }
-    .hero-buttons { justify-content: center; }
-    .hero-stats { justify-content: center; }
-    .hero-ribbon { width: 80%; margin: 0 auto; }
-    .about-grid { grid-template-columns: 1fr; gap: 3rem; }
-  }
-  @media (max-width: 768px) {
-    .section { padding: 4rem 0; }
-    .hero-ribbon { width: 100%; }
-    .card-portfolio, .card-testimonial { padding: 1.5rem; }
-    .section-title { font-size: clamp(2rem, 8vw, 3rem); }
-  }
 `;
 
 /* ─── DATA ───────────────────────────────────────────────────────────────── */
@@ -446,7 +417,7 @@ export default function App() {
 
   useEffect(() => {
     const style = document.createElement("style");
-    style.id = "nexflow-global";
+    style.id = "delva-global";
     style.textContent = GLOBAL_CSS;
     document.head.appendChild(style);
     const onScroll = () => setScrolled(window.scrollY > 60);
@@ -476,12 +447,12 @@ export default function App() {
           <a href="#" style={{ display: "flex", alignItems: "center", gap: 10, textDecoration: "none" }}>
             <Logo />
             <span style={{ fontFamily: "'Outfit',sans-serif", fontWeight: 800, fontSize: "1.15rem", color: "var(--text)", letterSpacing: "-.02em" }}>
-              NEX<span style={{ color: "var(--teal)" }}>FLOW</span>
+              DEL<span style={{ color: "var(--teal)" }}>VA</span>
             </span>
           </a>
 
           {/* Desktop nav */}
-          <div className="desktop-nav">
+          <div style={{ display: "flex", alignItems: "center", gap: "2.5rem" }}>
             {NAV_ITEMS.map(({ label, href }) => (
               <a key={label} href={href} className="nav-link">{label}</a>
             ))}
@@ -493,7 +464,7 @@ export default function App() {
           {/* Mobile toggle */}
           <button
             onClick={() => setMenuOpen(o => !o)}
-            className="mobile-menu-btn"
+            style={{ display: "none", background: "none", border: "none", color: "var(--text)", cursor: "pointer" }}
             aria-label="menu"
           >
             {menuOpen ? <X size={22} /> : <Menu size={22} />}
@@ -533,9 +504,9 @@ export default function App() {
           }} />
         </div>
 
-        <div className="container hero-container">
+        <div className="container" style={{ display: "flex", alignItems: "center", gap: "3rem", position: "relative", zIndex: 10 }}>
           {/* Text */}
-          <div className="hero-text">
+          <div style={{ flex: 1, minWidth: 0 }}>
             <span className="section-label fade-up">n8n Expert · Automatizaciones</span>
 
             <h1 className="fade-up-1" style={{
@@ -556,7 +527,7 @@ export default function App() {
               Diseño e implemento flujos con n8n que conectan tus herramientas, eliminan tareas manuales y escalan tu negocio sin fricciones ni código innecesario.
             </p>
 
-            <div className="fade-up-3 hero-buttons">
+            <div className="fade-up-3" style={{ display: "flex", gap: "1rem", flexWrap: "wrap", marginBottom: "3.5rem" }}>
               <a href="#portfolio" className="btn-primary">
                 Ver mis trabajos <ArrowRight size={16} />
               </a>
@@ -566,7 +537,7 @@ export default function App() {
             </div>
 
             {/* Stats */}
-            <div className="fade-up-4 hero-stats">
+            <div className="fade-up-4" style={{ display: "flex", gap: "3rem", flexWrap: "wrap" }}>
               {[["50+", "Flujos creados"], ["20+", "Clientes"], ["100%", "Proyectos entregados"]].map(([n, l]) => (
                 <div key={l}>
                   <div style={{ fontFamily: "'Outfit',sans-serif", fontSize: "2.2rem", fontWeight: 800, color: "var(--teal)", lineHeight: 1 }}>{n}</div>
@@ -577,7 +548,7 @@ export default function App() {
           </div>
 
           {/* Ribbon */}
-          <div className="hero-ribbon">
+          <div style={{ flex: "0 0 auto", width: "44%", display: "flex", justifyContent: "center" }}>
             <HeroRibbon />
           </div>
         </div>
@@ -603,7 +574,7 @@ export default function App() {
             </p>
           </div>
 
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(280px,1fr))", gap: "1.25rem" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(340px,1fr))", gap: "1.25rem" }}>
             {SERVICES.map(({ Icon, title, desc, color }) => (
               <div key={title} className="card-service">
                 <div style={{
@@ -635,7 +606,7 @@ export default function App() {
             </p>
           </div>
 
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(300px,1fr))", gap: "1.5rem" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(500px,1fr))", gap: "1.5rem" }}>
             {PORTFOLIO.map(({ category, title, desc, tags }) => (
               <div key={title} className="card-portfolio">
                 <span className="badge" style={{ marginBottom: "1.25rem", display: "inline-block" }}>{category}</span>
@@ -654,12 +625,12 @@ export default function App() {
 
       {/* ── ABOUT ─────────────────────────────────────────────────────── */}
       <section id="about" className="section" style={{ background: "rgba(11,24,40,.6)" }}>
-        <div className="container about-grid">
+        <div className="container" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "5rem", alignItems: "center" }}>
 
           {/* Text */}
           <div>
             <span className="section-label">Sobre mí</span>
-            <h2 className="section-title">¿Por qué n8n?<br /></h2>
+            <h2 className="section-title">¿Por qué n8n<br />y por qué yo?</h2>
             <p style={{ color: "var(--text-muted)", lineHeight: 1.8, marginBottom: "1.25rem", fontSize: ".97rem" }}>
               n8n es la herramienta de automatización más flexible del mercado: open source, auto-hosteable y con 400+ integraciones nativas. Permite flujos de cualquier complejidad sin los límites de herramientas como Zapier o Make.
             </p>
@@ -732,7 +703,7 @@ export default function App() {
             <h2 className="section-title">Lo que dicen mis clientes</h2>
           </div>
 
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(280px,1fr))", gap: "1.5rem" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(420px,1fr))", gap: "1.5rem" }}>
             {TESTIMONIALS.map(({ text, name, role, initial }) => (
               <div key={name} className="card-testimonial">
                 <div style={{ color: "var(--teal)", fontSize: "3.5rem", lineHeight: .9, marginBottom: "1rem", fontFamily: "Georgia,serif", opacity: .8 }}>"</div>
@@ -785,7 +756,7 @@ export default function App() {
             <a href="mailto:juanignaciorobertson@gmail.com" className="btn-primary" style={{ fontSize: "1rem", padding: "1rem 2rem" }}>
               <Mail size={18} /> Enviar email
             </a>
-            <a href="https://wa.me/542613028513" target="_blank" rel="noreferrer" className="btn-ghost" style={{ fontSize: "1rem", padding: "1rem 2rem" }}>
+            <a href="https://wa.me/+542613028513" target="_blank" rel="noreferrer" className="btn-ghost" style={{ fontSize: "1rem", padding: "1rem 2rem" }}>
               <MessageCircle size={18} /> WhatsApp
             </a>
           </div>
@@ -799,7 +770,7 @@ export default function App() {
           <a href="#" style={{ display: "flex", alignItems: "center", gap: 10, textDecoration: "none" }}>
             <Logo size={26} />
             <span style={{ fontFamily: "'Outfit',sans-serif", fontWeight: 800, color: "var(--text)", fontSize: "1rem" }}>
-              NEX<span style={{ color: "var(--teal)" }}>FLOW</span>
+              DEL<span style={{ color: "var(--teal)" }}>VA</span>
             </span>
           </a>
 
@@ -814,7 +785,7 @@ export default function App() {
           </div>
 
           <div style={{ color: "#3a4d62", fontSize: ".78rem" }}>
-            © {new Date().getFullYear()} NexFlow · n8n Expert
+            © {new Date().getFullYear()} DelVa · n8n Expert
           </div>
         </div>
       </footer>

@@ -1,0 +1,7 @@
+Hacer build:
+npm run build
+
+copiar y reemplazar el contenido de dist (carpeta assets e index.html) en la carpeta raiz del proyecto
+
+Para correr:
+npm run dev
